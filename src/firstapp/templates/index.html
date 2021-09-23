@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Search Student</h2>
+
+{% if data %}
+  <table border="1">
+    <tr>
+      {% for key, val in data[0].items() %}
+        <th>{{key}}</th>
+      {% endfor %}
+    </tr>
+    {% for student in data %}
+      <tr>
+        {% for key, val in student.items() %}
+          <td>{{val}}</td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+
+  </table>
+{% endif %}
+</div>
+<div>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flashes">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+{% from "_formhelpers.html" import render_field %}
+<form method="post" style="padding-left:16px; padding-top: 25px">
+  <p>
+    {{ render_field(form.select) }}
+    {{ render_field(form.search) }}
+  </p>
+  <p><input type="submit" value="Search">
+</p></form>
+</div>
+{% endblock %}

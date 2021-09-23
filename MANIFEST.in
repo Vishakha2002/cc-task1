@@ -1,0 +1,4 @@
+include firstapp/webapp.uwsgi
+graft firstapp/static
+graft firstapp/templates
+global-exclude *.pyc

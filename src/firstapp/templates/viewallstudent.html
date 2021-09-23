@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>List of all Students</h2>
+{% if error %}
+  {{ error }}
+{% endif %}
+
+<div style="padding-left:16px; padding-top: 25px;  padding-right:16px; overflow-x:auto">
+    {% if response %}
+      <table border="1">
+        <tr>
+          {% for key, val in response[0].items() %}
+            <th>{{key}}</th>
+          {% endfor %}
+        </tr>
+        {% for student in response %}
+          <tr>
+            {% for key, val in student.items() %}
+              <td>{{val}}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+    
+      </table>
+    {% endif %}
+</div>
+{% endblock %}

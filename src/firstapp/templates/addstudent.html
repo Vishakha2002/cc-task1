@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Add Student to Database</h2>
+
+{% for category, message in get_flashed_messages(with_categories=true) %}
+    <p class="{{ category }}">{{ message }}</p>
+{% endfor %}
+
+<div style="padding-left:16px; padding-top: 25px">
+  {% from "_formhelpers.html" import render_field %}
+  <form method="post">
+    <dl>
+      {{ render_field(form.first_name) }}
+      {{ render_field(form.last_name) }}
+      {{ render_field(form.email) }} 
+      {{ render_field(form.mailing_address) }}
+      {{ render_field(form.gpa) }} 
+    </dl>
+    <p><input type="submit" value="Add"></p>
+  </form>
+</div>
+{% endblock %}
